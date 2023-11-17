@@ -6,6 +6,13 @@
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
             <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                             Update Your Profile <a class="btn btn-primary btn-xs" href="{{ route('users.edit', [Auth::user()->id]) }}">Click Here</a>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Primary Card</div>

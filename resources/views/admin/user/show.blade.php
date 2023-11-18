@@ -12,7 +12,8 @@
                         </h4>
                     </div>
                     <div class="col-md-7 float-right">
-                        <button class="btn btn-primary btn-xs pull-right" onclick="window.print()"><i class="fa fa-print"></i></button>
+                        <button class="btn btn-primary btn-xs pull-right" onclick="window.print()"><i
+                                class="fa fa-print"></i></button>
                     </div>
                 </div>
             </div>
@@ -133,7 +134,7 @@
                                             <div class="small text-muted d-none d-md-block">{{ $user->gradation_no }}
                                             </div>
                                         </td>
-                                      
+
                                         <td>
                                             <div class="fw-bold">Join Date</div>
                                             <div class="small text-muted d-none d-md-block">{{ $user->join_date }}
@@ -142,7 +143,7 @@
 
                                     </tr>
                                     <tr>
-                                          <td>
+                                        <td>
                                             <div class="fw-bold">BCS Batch</div>
                                             <div class="small text-muted d-none d-md-block">{{ $user->bcs_batch }}
                                             </div>
@@ -152,7 +153,7 @@
                                             <div class="small text-muted d-none d-md-block">{{ $user->department_id }}
                                             </div>
                                         </td>
-                                      
+
                                         <td>
                                             <div class="fw-bold">Permanent Document</div>
                                             <div class="small text-muted d-none d-md-block">{{ $user->permanent_doc }}
@@ -160,7 +161,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                          <td>
+                                        <td>
                                             <div class="fw-bold">Permanent Date</div>
                                             <div class="small text-muted d-none d-md-block">{{ $user->permanent_date }}
                                             </div>
@@ -170,10 +171,10 @@
                                             <div class="small text-muted d-none d-md-block">{{ $user->designation }}
                                             </div>
                                         </td>
-                                      
+
                                         <td>
-                                            <div class="fw-bold">Permanent Document</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->permanent_doc }}
+                                            <div class="fw-bold">Status</div>
+                                            <div class="small text-muted d-none d-md-block">{{ $user->status }}
                                             </div>
                                         </td>
                                     </tr>

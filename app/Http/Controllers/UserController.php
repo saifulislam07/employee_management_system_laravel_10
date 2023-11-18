@@ -48,13 +48,13 @@ class UserController extends Controller
 
         $data = $request->all();
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->image->hashName();
             $request->image->move(public_path('profile'), $image);
         } else {
             $image = 'avatar.png';
         }
-        $data['name']     = $request->first_name.' '.$request->last_name;
+        $data['name']     = $request->first_name . ' ' . $request->last_name;
         $data['image']    = $image;
         $data['password'] = bcrypt($request->password);
         User::create($data);
@@ -67,8 +67,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-       $user = User::findOrFail($id); 
-     return view('admin.user.show', compact('user'));
+        $user = User::findOrFail($id);
+        return view('admin.user.show', compact('user'));
     }
 
     /**
@@ -90,35 +90,43 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name'    => 'required',
-            'email'         => 'required|string|email|unique:users,email,'.$id, // for that same user email address, for the same id
+            'email'         => 'required|string|email|unique:users,email,' . $id, // for that same user email address, for the same id
             'department_id' => 'required',
             'designation'   => 'required',
-            'role_id'       => 'required',
             'image'         => 'mimes:jpeg,jpg,png',
             'start_from'    => 'required|date',
         ]);
 
         $data = $request->all();
+
         $user = User::findOrFail($id);
 
-        if($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->image->hashName();
             $request->image->move(public_path('profile'), $image);
         } else {
             $image = $user->image;
         }
-
-        if ($request->password) {
-            $password = $request->password;
+        if ($request->hasFile('permanent_doc')) {
+            $permanent_doc = $request->permanent_doc->hashName();
+            $request->permanent_doc->move(public_path('document'), $permanent_doc);
         } else {
-            $password = $user->password;
+            $permanent_doc = $user->permanent_doc;
         }
 
+        // if ($request->password) {
+        //     $password = $request->password;
+        // } else {
+        //     $password = $user->password;
+        // }
+
         $data['image']    = $image;
-        $data['password'] = bcrypt($password);
-        
+        $data['permanent_doc']    = $permanent_doc;
+        // $data['password'] = bcrypt($password);
+
         $user->update($data);
         return redirect()->back()->with('message', 'User Updated Successfully!');
     }

@@ -14,9 +14,11 @@
 </div>
 
 <!-- Template themes -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>        
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
 
 <!-- Scripts -->
 <script src="{{ asset('template/js/scripts.js') }}"></script>
@@ -33,19 +35,40 @@
 {{-- jQuery DatePicker --}}
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
-    $( function() {
-      $( "#datepicker" ).datepicker({dateFormat:"yy-mm-dd"}).val();
-    } );
+    $(function() {
+        $("#datepicker").datepicker({
+            dateFormat: "yy-mm-dd"
+        }).val();
+    });
 </script>
 <script>
-    $( function() {
-      $( "#datepicker1" ).datepicker({dateFormat:"yy-mm-dd"}).val();
-    } );
+    $(function() {
+        $("#datepicker1").datepicker({
+            dateFormat: "yy-mm-dd"
+        }).val();
+    });
 </script>
 <script>
-    $( function() {
-      $( "#datepicker2" ).datepicker({dateFormat:"yy-mm-dd"}).val();
-    } );
+    $(function() {
+        $("#datepicker2").datepicker({
+            dateFormat: "yy-mm-dd"
+        }).val();
+    });
+</script>
+<script>
+    $(function() {
+        $("#datepicker3").datepicker({
+            dateFormat: "yy-mm-dd"
+        }).val();
+    });
+</script>
+<script>
+    $(function() {
+        $("#datepicker4").datepicker({
+            dateFormat: "yy-mm-dd"
+        }).val();
+    });
 </script>
 </body>
+
 </html>

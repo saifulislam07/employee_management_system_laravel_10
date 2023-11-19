@@ -27,10 +27,10 @@
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
                     <div class="card-header">Profile Picture</div>
-                    <div class="card-body text-center">
+                    <div class="card-body text-center" style="min-height: 359px;">
                         <!-- Profile picture image-->
 
-                        <img width="100" class="img-account-profile  mb-2"
+                        <img width="200px" class="img-account-profile  mb-2"
                             src="{{ asset('profile') }}/{{ $user->image }}" alt="">
 
                         <!-- Profile picture help block-->
@@ -49,62 +49,62 @@
                             <table class="table table-borderless mb-0">
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td width="50%">
                                             <div class="fw-bold">Name <span class="spanstyle">(English)</span></div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->name }}
+                                            <div class="small text-muted  d-md-block">{{ $user->name }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Name <span class="spanstyle">(Bangla)</span></div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->name_bn }}
+                                            <div class="small text-muted  d-md-block">{{ $user->name_bn }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Father Name </div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->father_name }}
+                                            <div class="small text-muted  d-md-block">{{ $user->father_name }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Mother Name</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->mother_name }}
+                                            <div class="small text-muted  d-md-block">{{ $user->mother_name }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Date Of Birth </div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->dob }}
+                                            <div class="small text-muted  d-md-block">{{ $user->dob }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Email</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->email }}
+                                            <div class="small text-muted  d-md-block">{{ $user->email }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Address</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->address }}
+                                            <div class="small text-muted  d-md-block">{{ $user->address }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Gender</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->gender }}
+                                            <div class="small text-muted  d-md-block">{{ $user->gender }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Mobile Number</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->mobile_number }}
+                                            <div class="small text-muted  d-md-block">{{ $user->mobile_number }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Emergency Number</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->emergency_number }}
+                                            <div class="small text-muted  d-md-block">{{ $user->emergency_number }}
                                             </div>
                                         </td>
                                     </tr>
@@ -126,18 +126,18 @@
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Basic Salary</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->basic_salary }}
+                                            <div class="small text-muted  d-md-block">{{ $user->basic_salary }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Gradation No</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->gradation_no }}
+                                            <div class="small text-muted  d-md-block">{{ $user->gradation_no }}
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="fw-bold">Join Date</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->join_date }}
+                                            <div class="small text-muted  d-md-block">{{ $user->join_date }}
                                             </div>
                                         </td>
 
@@ -145,36 +145,49 @@
                                     <tr>
                                         <td>
                                             <div class="fw-bold">BCS Batch</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->bcs_batch }}
+                                            <div class="small text-muted  d-md-block">{{ $user->bcs_batch }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Department</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->department_id }}
+                                            <div class="small text-muted  d-md-block">
+                                                {{ $user->department->name }}
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="fw-bold">Permanent Document</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->permanent_doc }}
+                                            <div class="small text-muted  d-md-block">
+                                                <a target="_blank"
+                                                    href="{{ asset('document') }}/{{ $user->permanent_doc }}">View
+                                                    Document</a>
+
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Permanent Date</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->permanent_date }}
+                                            <div class="small text-muted  d-md-block">{{ $user->permanent_date }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Designation</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->designation }}
+                                            <div class="small text-muted  d-md-block">{{ $user->designation }}
                                             </div>
                                         </td>
 
                                         <td>
                                             <div class="fw-bold">Status</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->status }}
+                                            <div class="small text-muted  d-md-block">
+                                                @if ($user->status == 'inactive')
+                                                    <span style="background-color: red;color: white; padding: 5px 7px">
+                                                        {{ $user->status }}</span>
+                                                @else
+                                                    <span style="background-color: green;color: white; padding: 5px 7px"">
+                                                        {{ $user->status }}</span>
+                                                @endif
+
                                             </div>
                                         </td>
                                     </tr>
@@ -195,53 +208,53 @@
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Birth Certificate Number</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->birth_no }}
+                                            <div class="small text-muted  d-md-block">{{ $user->birth_no }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Nationality</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->country_id }}
+                                            <div class="small text-muted  d-md-block">{{ $user->country_id }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">District</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->district_id }}
+                                            <div class="small text-muted  d-md-block">{{ $dist }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Driving License</div>
-                                            <div class="small text-muted d-none d-md-block">
-                                                {{ $user->birtdriving_licenseh_no }}
+                                            <div class="small text-muted  d-md-block">
+                                                {{ $user->driving_license }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Relationship Contact Number</div>
-                                            <div class="small text-muted d-none d-md-block">
+                                            <div class="small text-muted  d-md-block">
                                                 {{ $user->relationship_number }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Blood Group</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->blood_id }}
+                                            <div class="small text-muted  d-md-block">{{ $user->blood->title }}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <div class="fw-bold">Freedom Fighter</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->freedom_fighter }}
+                                            <div class="small text-muted  d-md-block">{{ $user->freedom_fighter }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Religion</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->religion_id }}
+                                            <div class="small text-muted  d-md-block">{{ $user->religion->title }}
                                             </div>
                                         </td>
                                         <td>
                                             <div class="fw-bold">Marital Status</div>
-                                            <div class="small text-muted d-none d-md-block">{{ $user->marital_status_id }}
+                                            <div class="small text-muted  d-md-block">{{ $user->marital->name }}
                                             </div>
                                         </td>
                                     </tr>

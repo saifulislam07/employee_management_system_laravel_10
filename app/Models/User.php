@@ -75,6 +75,18 @@ class User extends Authenticatable
     {
         return $this->hasOne(Department::class, 'id', 'department_id');
     }
+    public function blood()
+    {
+        return $this->hasOne(Blood::class, 'id', 'blood_id');
+    }
+    public function religion()
+    {
+        return $this->hasOne(Religion::class, 'id', 'religion_id');
+    }
+    public function marital()
+    {
+        return $this->hasOne(Marital::class, 'id', 'marital_status_id');
+    }
 
     public function role()
     {

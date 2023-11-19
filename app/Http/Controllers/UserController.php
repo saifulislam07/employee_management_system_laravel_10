@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blood;
 use App\Models\Department;
+use App\Models\Marital;
+use App\Models\Religion;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -68,7 +72,9 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user.show', compact('user'));
+        $district = DB::table('districts')->where('id', $user->district_id)->first();
+        $dist = $district->name;
+        return view('admin.user.show', compact('user', 'dist'));
     }
 
     /**
@@ -80,9 +86,14 @@ class UserController extends Controller
         $department = $user->department;  // get department of the user
         $role = $user->role;  // get role of the user
         $allDepartments = Department::all();  // get all departments
+        $allBloods = Blood::all();  // get all departments
+        $allMarital = Marital::all();  // get all departments
+        $allReligion = Religion::all();  // get all departments
+        $allDistrict = DB::table('districts')->get();  // get all departments
+        $allCountry = DB::table('country')->get();  // get all departments
         $allRoles = Role::all();  // get all roles
 
-        return view('admin.user.edit', compact('user', 'department', 'role', 'allDepartments', 'allRoles'));
+        return view('admin.user.edit', compact('user', 'allBloods', 'allReligion', 'allDistrict', 'allCountry', 'allMarital', 'department', 'role', 'allDepartments', 'allRoles'));
     }
 
     /**

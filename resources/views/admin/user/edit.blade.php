@@ -237,34 +237,74 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Marital Status</label>
-                                            <input type="text" name="marital_status_id" class="form-control"
-                                                id="inputMobileNumber" value="{{ $user->marital_status_id }}">
+                                            <select class="form-control" name="marital_status_id">
+                                                <option selected value="" disabled>Select</option>
+                                                @foreach ($allMarital as $marit)
+                                                    <option value="{{ $marit->id }}"
+                                                        @if ($user->marital_status_id == $marit->id) selected @endif>
+                                                        {{ $marit->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
 
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Religion</label>
-                                            <input type="text" name="religion_id" class="form-control"
-                                                id="inputMobileNumber" value="{{ $user->religion_id }}">
+                                            <select class="form-control" name="religion_id">
+                                                <option selected value="" disabled>Select</option>
+                                                @foreach ($allReligion as $reli)
+                                                    <option value="{{ $reli->id }}"
+                                                        @if ($user->religion_id == $reli->id) selected @endif>
+                                                        {{ $reli->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
+
+
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Blood</label>
-                                            <input type="text" name="blood_id" class="form-control"
-                                                id="inputMobileNumber" value="{{ $user->blood_id }}">
+
+                                            <select class="form-control" name="blood_id">
+                                                <option selected value="" disabled>Select</option>
+                                                @foreach ($allBloods as $blood)
+                                                    <option value="{{ $blood->id }}"
+                                                        @if ($user->blood_id == $blood->id) selected @endif>
+                                                        {{ $blood->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
 
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">Country</label>
-                                            <input type="text" name="country_id" class="form-control"
-                                                id="inputMobileNumber" value="{{ $user->country_id }}">
+
+                                            <select class="form-control" name="country_id">
+                                                <option selected value="" disabled>Select</option>
+                                                @foreach ($allCountry as $country)
+                                                    <option value="{{ $country->countryname }}"
+                                                        @if ($user->country_id == $country->countryname) selected @endif>
+                                                        {{ $country->countryname }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword4">District</label>
-                                            <input type="text" name="district_id" class="form-control"
-                                                id="inputMobileNumber" value="{{ $user->district_id }}">
+
+                                            <select class="form-control" name="district_id">
+                                                <option selected value="" disabled>Select</option>
+                                                @foreach ($allDistrict as $dist)
+                                                    <option value="{{ $dist->id }}"
+                                                        @if ($user->district_id == $dist->id) selected @endif>
+                                                        {{ $dist->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
@@ -290,6 +330,15 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="email">Birth Certificate No</label>
+                                                <input type="text" name="birth_no" class="form-control"
+                                                    placeholder="Birth Certificate No">
+                                            </div>
+
                                         </div>
                                     </div>
                                     @if (isset(auth()->user()->role->permission['name']['user']['can-edit']))
@@ -353,6 +402,7 @@
                                                 </select>
                                             </div>
                                         </div>
+
 
 
                                         @if (isset(auth()->user()->role->permission['name']['user']['can-edit']))

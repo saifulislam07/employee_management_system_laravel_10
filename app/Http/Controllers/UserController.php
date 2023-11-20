@@ -29,8 +29,15 @@ class UserController extends Controller
     {
         $departments = Department::all();
         $roles       = Role::all();
+        $allBloods = Blood::all();  // get all departments
+        $allMarital = Marital::all();  // get all departments
+        $allReligion = Religion::all();  // get all departments
+        $allDistrict = DB::table('districts')->get();  // get all departments
+        $allCountry = DB::table('country')->get();  // get all departments
 
-        return view('admin.user.create', compact('departments', 'roles'));
+
+
+        return view('admin.user.regi', compact('departments', 'roles', 'allBloods', 'allMarital', 'allReligion', 'allDistrict', 'allCountry'));
     }
 
     /**
@@ -39,15 +46,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'first_name'    => 'required',
-            'last_name'     => 'required',
+            'name'    => 'required',
             'email'         => 'required|string|email|unique:users',
-            'password'      => 'required|string',
             'department_id' => 'required',
             'designation'   => 'required',
             'role_id'       => 'required',
             'image'         => 'mimes:jpeg,jpg,png',
-            'start_from'    => 'required|date',
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required'
         ]);
 
         $data = $request->all();
@@ -58,8 +64,16 @@ class UserController extends Controller
         } else {
             $image = 'avatar.png';
         }
-        $data['name']     = $request->first_name . ' ' . $request->last_name;
+
+        if ($request->hasFile('permanent_doc')) {
+            $permanent_doc = $request->permanent_doc->hashName();
+            $request->permanent_doc->move(public_path('document'), $permanent_doc);
+        } else {
+            $permanent_doc = 'avatar.png';
+        }
+
         $data['image']    = $image;
+        $data['permanent_doc']    = $permanent_doc;
         $data['password'] = bcrypt($request->password);
         User::create($data);
 
@@ -133,13 +147,32 @@ class UserController extends Controller
         // } else {
         //     $password = $user->password;
         // }
-
+        $data = $request->all();
         $data['image']    = $image;
         $data['permanent_doc']    = $permanent_doc;
         // $data['password'] = bcrypt($password);
 
         $user->update($data);
         return redirect()->back()->with('message', 'User Updated Successfully!');
+    }
+
+    public function updatepassword(Request $request, $id)
+    {
+
+        // dd($request->all());
+        $this->validate($request, [
+            'role_id'       => 'required',
+        ]);
+        $user = User::findOrFail($id);
+        if ($request->password) {
+            $password = $request->password;
+        } else {
+            $password = $user->password;
+        }
+        $data['password'] = bcrypt($password);
+
+        $user->update($data);
+        return redirect()->back()->with('message', 'Password Updated Successfully!');
     }
 
     /**

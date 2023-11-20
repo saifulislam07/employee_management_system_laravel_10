@@ -22,6 +22,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+
                 @if (Session::has('message'))
                     <div class="alert alert-success">
                         {{ Session::get('message') }}
@@ -87,8 +88,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="inputFirstName">Email <span
-                                                    class="spanstyle">(English)</span></label>
+                                            <label for="inputFirstName">Email </label>
                                             <input type="text" name="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 value="{{ $user->email }}">
@@ -335,8 +335,8 @@
 
                                             <div class="form-group">
                                                 <label for="email">Birth Certificate No</label>
-                                                <input type="text" name="birth_no" class="form-control"
-                                                    placeholder="Birth Certificate No">
+                                                <input type="text" value="{{ $user->birth_no }}" name="birth_no"
+                                                    class="form-control" placeholder="Birth Certificate No">
                                             </div>
 
                                         </div>
@@ -359,9 +359,9 @@
                     </div>
                 @endif
 
-                <form action="{{ route('users.update', [$user->id]) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('updatepassword', $user->id) }}" method="post">
                     @csrf
-                    {{ method_field('PATCH') }}
+                    {{-- {{ method_field('PATCH') }} --}}
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <div class="card">
@@ -369,26 +369,14 @@
                                 <div class="card-body">
                                     <div class="form-row">
 
-                                        <div class="form-group col-md-4">
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" name="email"
-                                                    class="form-control @error('email') is-invalid @enderror"
-                                                    required="" value="{{ $user->email }}">
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4">
+
+                                        <div class="form-group col-md-6">
                                             <div class="form-group">
                                                 <label for="password">Password</label>
                                                 <input type="password" name="password" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
                                             <div class="form-group">
                                                 <label for="email">Role</label>
                                                 <select class="form-control" name="role_id" name="role_id"

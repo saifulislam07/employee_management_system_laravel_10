@@ -27,6 +27,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth', 'has.permission']], function () {
+    Route::post('/user-password/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
 
     Route::get('/', function () {
         return view('welcome');

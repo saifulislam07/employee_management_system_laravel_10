@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -22,7 +22,7 @@
 
         @media (min-width: 768px) {
             .gradient-form {
-                height: 100vh !important;
+                /* height: 100vh !important; */
             }
         }
 
@@ -44,54 +44,68 @@
     <section class="h-100 gradient-form" style="background-color: #eee;">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-xl-12">
+                <div class="col-xl-10">
                     <div class="card rounded-3 text-black">
                         <div class="row g-0">
                             <div class="col-lg-6">
                                 <div class="card-body p-md-5 mx-md-4">
+
                                     <div class="text-center">
                                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                                             style="width: 185px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
                                     </div>
-                                    <form>
-                                        <p>Give your information to create account</p>
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="form2Example11">Name</label>
-                                            <input type="text" name="name" id="form2Example11"
-                                                class="form-control" placeholder="Enter your full name" />
+
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <p>Please login to your account</p>
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label"
+                                                for="form2Example11">{{ __('Email Address') }}</label>
+                                            <input type="email"
+                                                id="email"class="form-control @error('email') is-invalid @enderror"
+                                                name="email" value="{{ old('email') }}" required autocomplete="email"
+                                                autofocus>
+                                            @error('email')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="form2Example11">Email</label>
-                                            <input type="email" id="form2Example11" class="form-control"
-                                                placeholder="Enter valid email address" />
+
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example22">{{ __('Password') }}</label>
+                                            <input id="password" type="password"
+                                                class="form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="current-password">
+
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="form2Example22">Gradation No</label>
-                                            <input type="text" placeholder="Gradation No" name="gradation_no"
-                                                id="form2Example22" class="form-control" />
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="form2Example11">Password</label>
-                                            <input type="password" name="" id="form2Example11"
-                                                class="form-control" placeholder="Password" />
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                            <label class="form-label" for="form2Example11">Confirm Password</label>
-                                            <input type="password" name="confirm_password" id="form2Example11"
-                                                class="form-control" placeholder="Confirm Password" />
-                                        </div>
-                                        <div class="text-center pt-2 mb-5 pb-1">
+
+                                        <div class="text-center pt-1 mb-5 pb-1">
                                             <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
-                                                type="button">Log
+                                                type="submit">Log
                                                 in</button>
-                                            <a class="text-muted" href="#!">Forgot password?</a>
+                                            @if (Route::has('password.request'))
+                                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                    {{ __('Forgot Your Password?') }}
+                                                </a>
+                                            @endif
                                         </div>
+
                                         <div class="d-flex align-items-center justify-content-center pb-4">
-                                            <p class="mb-0 me-2">Don't have an account? &nbsp;</p>
-                                            <button type="button" class="btn btn-outline-danger">Sign In</button>
+                                            <p class="mb-0 me-2">Don't have an account ? &nbsp; </p>
+                                            <a type="button" href="{{ route('register') }}"
+                                                class="btn btn-outline-danger"> Create new</a>
                                         </div>
+
                                     </form>
+
                                 </div>
                             </div>
                             <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
@@ -110,6 +124,7 @@
             </div>
         </div>
     </section>
+
 </body>
 
 </html>

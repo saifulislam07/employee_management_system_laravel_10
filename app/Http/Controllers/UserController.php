@@ -37,7 +37,7 @@ class UserController extends Controller
 
 
 
-        return view('admin.user.regi', compact('departments', 'roles', 'allBloods', 'allMarital', 'allReligion', 'allDistrict', 'allCountry'));
+        return view('admin.user.create', compact('departments', 'roles', 'allBloods', 'allMarital', 'allReligion', 'allDistrict', 'allCountry'));
     }
 
     /**

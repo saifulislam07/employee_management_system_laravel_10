@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('custom-registration', [App\Http\Controllers\HomeController::class, 'customRegistration'])->name('register.custom');
 Route::group(['middleware' => ['auth', 'has.permission']], function () {
     Route::post('/user-password/{id}', [UserController::class, 'updatepassword'])->name('updatepassword');
 
@@ -42,5 +42,6 @@ Route::group(['middleware' => ['auth', 'has.permission']], function () {
 });
 
 Auth::routes();
+// Route::post('registration', [App\Http\Controllers\HomeController::class, 'registrations'])->name('uregister');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
